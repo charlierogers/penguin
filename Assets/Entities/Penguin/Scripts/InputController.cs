@@ -24,6 +24,12 @@ public class InputController : MonoBehaviour {
         return Input.GetAxisRaw("Horizontal");
     }
 
+    public bool GetJumpButton() {
+        if (!input_enabled)
+            return false;
+
+        return Input.GetKey(KeyCode.UpArrow);
+    }
 
     public void DisableInput() {
         input_enabled = false;

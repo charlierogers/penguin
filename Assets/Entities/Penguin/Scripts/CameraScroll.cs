@@ -7,34 +7,46 @@ public class CameraScroll : MonoBehaviour {
     public float right_limit = 5.0f;
     public float up_limit = 2.0f;
     public float down_limit = -2.0f;
+    public float transition_duration = 1.0f;
 
-    private float initialVertOffset;
+    private Vector3 initialOffset;
+    private Coroutine transitionCoroutine;
+    private MovePenguin movePenguin;
 
 	// Use this for initialization
 	void Start () {
-        initialVertOffset = transform.position.y - Camera.main.transform.position.y;
+        movePenguin = GetComponent<MovePenguin>();
+        initialOffset = Camera.main.transform.position - transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         float cameraHorzDiff = transform.position.x - Camera.main.transform.position.x;
-        float cameraVertDiff = transform.position.y - (Camera.main.transform.position.y + initialVertOffset);
-        float camX = Camera.main.transform.position.x;
+        float cameraVertDiff = movePenguin.GetStablePosition().y - (Camera.main.transform.position.y - initialOffset.y);
+        //float camX = Camera.main.transform.position.x;
         float camY = Camera.main.transform.position.y;
         float camZ = Camera.main.transform.position.z;
         //keep camera approximately centered on player vertically
-        Camera.main.transform.position = new Vector3(camX, transform.position.y - initialVertOffset, camZ);
-        //if (cameraVertDiff > up_limit) {
-        //    Camera.main.transform.position = new Vector3(camX, Mathf.Lerp(camY, camY - initialVertOffset, Time.deltaTime), camZ);
-        //} else if (cameraVertDiff < down_limit) {
-        //    Camera.main.transform.position = new Vector3(camX, Mathf.Lerp(camY, camY + initialVertOffset, Time.deltaTime), camZ);
-        //}
+        if (cameraVertDiff > up_limit || cameraVertDiff < down_limit) {
+            if (transitionCoroutine != null)
+                StopCoroutine(transitionCoroutine);
+            transitionCoroutine = StartCoroutine(CameraTransition(movePenguin.GetStablePosition() + initialOffset));
+        }
         //move camera to the right with player
         if (cameraHorzDiff > right_limit) {
             Camera.main.transform.position = new Vector3(transform.position.x - right_limit, camY, camZ);
-            //camX = transform.position.x - right_limit;
         }
-
-        //Camera.main.transform.position = new Vector3(camX, camY, camZ);
 	}
+
+    private IEnumerator CameraTransition(Vector3 targetPos) {
+        float t = 0.0f;
+        Vector3 startPos = Camera.main.transform.position;
+        while (t < 1.0f) {
+            t += Time.deltaTime * (Time.timeScale / transition_duration);
+            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, 
+                Mathf.Lerp(startPos.y, targetPos.y, t),
+                Camera.main.transform.position.z);
+            yield return 0;
+        }
+    }
 }

@@ -8,8 +8,11 @@ public class BallMovement : MonoBehaviour {
     public float movement_speed = 1.0f;
     public float bounce_force = 50.0f;
     public float anti_gravity = 3.0f;
+    public float squish_amount = 0.75f;
+    public float squish_duration = 0.5f;
 
     private Rigidbody rb;
+    private Coroutine squishCoroutine;
 
 	// Use this for initialization
 	void Start () {
@@ -26,12 +29,21 @@ public class BallMovement : MonoBehaviour {
 	}
 
     private void OnCollisionEnter(Collision collision) {
-        Debug.Log("collision: " + LayerMask.LayerToName(collision.gameObject.layer));
-        if (collision.gameObject.layer == LayerMask.NameToLayer("FloorTile")) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        } else if (collision.gameObject.layer == LayerMask.NameToLayer("Penguin")) {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("PenguinHead")) {
             rb.AddForce(Vector3.up * bounce_force);
-            Debug.Log("bounce");
+            if (squishCoroutine != null) {
+                StopCoroutine(squishCoroutine);
+                transform.localScale = Vector3.one;
+            }
+            squishCoroutine = StartCoroutine(SquishBall());
         }
+    }
+
+    private IEnumerator SquishBall() {
+        Vector3 squishedScale = transform.localScale;
+        squishedScale.y = squish_amount;
+        transform.localScale = squishedScale;
+        yield return new WaitForSeconds(squish_duration);
+        transform.localScale = Vector3.one;
     }
 }
