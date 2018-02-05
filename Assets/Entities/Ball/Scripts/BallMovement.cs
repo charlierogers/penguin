@@ -30,6 +30,7 @@ public class BallMovement : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.layer == LayerMask.NameToLayer("PenguinHead")) {
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().PlayBallBounceSound();
             rb.AddForce(Vector3.up * bounce_force);
             if (squishCoroutine != null) {
                 StopCoroutine(squishCoroutine);

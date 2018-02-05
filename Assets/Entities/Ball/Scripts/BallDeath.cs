@@ -22,6 +22,7 @@ public class BallDeath : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.layer == LayerMask.NameToLayer("FloorTile")) {
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().PlayBallDieSound();
             GameObject.Find("Penguin").GetComponent<InputController>().DisableInput();
             rb.velocity = Vector3.zero;
             sphereCollider.enabled = false;

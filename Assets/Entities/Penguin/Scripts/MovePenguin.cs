@@ -48,6 +48,7 @@ public class MovePenguin : MonoBehaviour {
             rb.AddForce(Vector3.up * jump_speed, ForceMode.Impulse);
             jumpingUp = true;
             jump = false;
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().PlayJumpSound();
             StartCoroutine(JumpMonitor());
         }
 
