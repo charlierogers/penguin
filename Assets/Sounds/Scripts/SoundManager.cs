@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour {
     public AudioClip jumpSound;
     public AudioClip ballBounceSound;
     public AudioClip ballDieSound;
+    public AudioClip wonLevelSound;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +22,7 @@ public class SoundManager : MonoBehaviour {
         }
         DontDestroyOnLoad(gameObject);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		
@@ -39,6 +40,11 @@ public class SoundManager : MonoBehaviour {
 
     public void PlayBallDieSound() {
         soundEffects.clip = ballDieSound;
+        soundEffects.Play();
+    }
+
+    public void PlayWonLevelSound() {
+        soundEffects.clip = wonLevelSound;
         soundEffects.Play();
     }
 }
