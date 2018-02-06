@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class DetectBallInIgloo : MonoBehaviour {
 
-    public float restart_delay = 2.0f;
+    public float next_level_delay = 2.0f;
+    public string next_scene = "";
 
 	// Use this for initialization
 	void Start () {
@@ -28,7 +29,7 @@ public class DetectBallInIgloo : MonoBehaviour {
     }
 
     private IEnumerator DelayThenRestart() {
-        yield return new WaitForSeconds(restart_delay);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        yield return new WaitForSeconds(next_level_delay);
+        SceneManager.LoadScene(next_scene);
     }
 }

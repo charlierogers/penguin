@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class RepeatingBackground : MonoBehaviour {
 
-    private GameObjectFinder finder;
     private float backgroundWidth, rightEdge;
 
 	// Use this for initialization
 	void Start () {
-        finder = GetComponent<GameObjectFinder>();
         backgroundWidth = transform.GetChild(0).GetComponent<SpriteRenderer>().bounds.size.x;
 	}
 	
