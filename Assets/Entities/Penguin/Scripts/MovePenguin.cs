@@ -8,9 +8,11 @@ public class MovePenguin : MonoBehaviour {
     public float movement_speed = 4.0f;
     public float jump_speed = 4.0f;
     public float extra_gravity = 5.0f;
+    public float raycast_down_dist = 0.75f;
 
     private Rigidbody rb;
     private InputController inputController;
+    private Animator animator;
 
     private bool on_ground;
     private bool jumpingUp;
@@ -22,6 +24,7 @@ public class MovePenguin : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody>();
         inputController = GetComponent<InputController>();
+        animator = GetComponent<Animator>();
         jumpingUp = false;
         jump = false;
         horizontalMovement = 0.0f;
@@ -32,9 +35,13 @@ public class MovePenguin : MonoBehaviour {
 	void Update () {
         horizontalMovement = inputController.GetHorizontalAxis();
 
+        // should player jump?
         if (on_ground && !jumpingUp && inputController.GetJumpButton()) {
             jump = true;
         }
+
+        // update the animator parameter for motion
+        animator.SetFloat("horizontal_input", horizontalMovement);
 	}
 
     public Vector3 GetStablePosition() {
@@ -74,6 +81,9 @@ public class MovePenguin : MonoBehaviour {
             stablePosition = transform.position;
         }
 
+        // check if penguin far enough off ground to flap wings
+        animator.SetBool("on_ground", Physics.Raycast(new Ray(transform.position, Vector3.down), raycast_down_dist));
+        Debug.DrawRay(transform.position, Vector3.down * raycast_down_dist, Color.red);
     }
 
     private bool CanMove() {

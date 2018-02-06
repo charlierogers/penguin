@@ -17,7 +17,6 @@ public class RepeatingBackground : MonoBehaviour {
 	void Update () {
         float rightEdge = transform.position.x + backgroundWidth / 2.0f;
         if (rightEdge < GetLeftCameraEdgePosition()) {
-            Debug.Log("translate");
             TranslateBackground();
         }
 	}
