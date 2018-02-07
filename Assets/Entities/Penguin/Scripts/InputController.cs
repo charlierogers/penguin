@@ -28,7 +28,7 @@ public class InputController : MonoBehaviour {
         if (!input_enabled)
             return false;
 
-        return Input.GetKey(KeyCode.UpArrow);
+        return Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow);
     }
 
     public void DisableInput() {

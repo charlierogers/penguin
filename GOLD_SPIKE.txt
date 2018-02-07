@@ -1,0 +1,4 @@
+GOLD SPIKE FEATURE
+==================
+
+My Gold Spike feature is the fluid jumping of the penguin, bouncing of the ball, and motion of the camera. Even though these core features seem basic on the surface, tuning them to feel just right can be challenging. For instance, the penguin's jump can't be too forceful or too light, and the vertical camera motion must follow the vertical position of the penguin, yet not bounce around too much when the penguin jumps.
