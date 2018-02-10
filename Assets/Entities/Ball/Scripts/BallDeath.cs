@@ -21,7 +21,8 @@ public class BallDeath : MonoBehaviour {
 	}
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("FloorTile")) {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("FloorTile") ||
+            collision.gameObject.layer == LayerMask.NameToLayer("SpikeBall")) {
             GameObject.Find("SoundManager").GetComponent<SoundManager>().PlayBallDieSound();
             GameObject.Find("Penguin").GetComponent<InputController>().DisableInput();
             rb.velocity = Vector3.zero;
