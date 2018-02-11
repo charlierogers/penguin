@@ -20,14 +20,20 @@ public class BallDeath : MonoBehaviour {
 		
 	}
 
-    private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("FloorTile") ||
-            collision.gameObject.layer == LayerMask.NameToLayer("SpikeBall")) {
+    public void Kill() {
             GameObject.Find("SoundManager").GetComponent<SoundManager>().PlayBallDieSound();
-            GameObject.Find("Penguin").GetComponent<InputController>().DisableInput();
-            rb.velocity = Vector3.zero;
             sphereCollider.enabled = false;
             animator.SetTrigger("BreakBall");
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("FloorTile")) {
+            GameObject.Find("Penguin").GetComponent<PenguinDeath>().Kill();
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            Kill();
+        } else if (collision.gameObject.layer == LayerMask.NameToLayer("SpikeBall")) {
+            GameObject.Find("Penguin").GetComponent<PenguinDeath>().Kill();
+            Kill();
         }
     }
 

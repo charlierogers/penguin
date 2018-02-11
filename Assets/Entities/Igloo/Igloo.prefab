@@ -9,17 +9,17 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1792567029790332}
+  m_RootGameObject: {fileID: 1675770611384782}
   m_IsPrefabParent: 1
---- !u!1 &1129827022533408
+--- !u!1 &1063471816230582
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4253989318183984}
-  - component: {fileID: 65420369301062724}
+  - component: {fileID: 4492354174097474}
+  - component: {fileID: 65613989628230246}
   m_Layer: 14
   m_Name: PenguinStopper
   m_TagString: Untagged
@@ -27,19 +27,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1792567029790332
+--- !u!1 &1675770611384782
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4360641040927844}
-  - component: {fileID: 212187801621001394}
-  - component: {fileID: 65720859681627160}
-  - component: {fileID: 95515248257388534}
-  - component: {fileID: 114511264706125458}
-  - component: {fileID: 54099510376842076}
+  - component: {fileID: 4370834921445258}
+  - component: {fileID: 212128905398645206}
+  - component: {fileID: 65374664942582824}
+  - component: {fileID: 95211748124136224}
+  - component: {fileID: 114522298443435504}
+  - component: {fileID: 54459347795179388}
   m_Layer: 13
   m_Name: Igloo
   m_TagString: Untagged
@@ -47,39 +47,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4253989318183984
+--- !u!4 &4370834921445258
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1129827022533408}
+  m_GameObject: {fileID: 1675770611384782}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 104.01001, y: 20.04, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4492354174097474}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4492354174097474
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1063471816230582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4360641040927844}
+  m_Father: {fileID: 4370834921445258}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4360641040927844
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1792567029790332}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 86, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4253989318183984}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54099510376842076
+--- !u!54 &54459347795179388
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1792567029790332}
+  m_GameObject: {fileID: 1675770611384782}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -89,37 +89,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!65 &65420369301062724
+--- !u!65 &65374664942582824
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1129827022533408}
-  m_Material: {fileID: 13400000, guid: 719a9488e7f0569459a2383689bd8c54, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4, y: 3.75, z: 1}
-  m_Center: {x: 0, y: 0.09, z: 0}
---- !u!65 &65720859681627160
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1792567029790332}
+  m_GameObject: {fileID: 1675770611384782}
   m_Material: {fileID: 13400000, guid: 719a9488e7f0569459a2383689bd8c54, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4, y: 0.13, z: 0.2}
   m_Center: {x: 0, y: 0.82, z: 0}
---- !u!95 &95515248257388534
+--- !u!65 &65613989628230246
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1063471816230582}
+  m_Material: {fileID: 13400000, guid: 719a9488e7f0569459a2383689bd8c54, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 3.75, z: 1}
+  m_Center: {x: 0, y: 0.09, z: 0}
+--- !u!95 &95211748124136224
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1792567029790332}
+  m_GameObject: {fileID: 1675770611384782}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 3cfbda8709eb23449a3956329833f172, type: 2}
@@ -130,25 +130,25 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114511264706125458
+--- !u!114 &114522298443435504
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1792567029790332}
+  m_GameObject: {fileID: 1675770611384782}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74fd53d45298eb6439d40867dd43d26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   next_level_delay: 2
-  next_scene: Level2
---- !u!212 &212187801621001394
+  next_scene: Level3
+--- !u!212 &212128905398645206
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1792567029790332}
+  m_GameObject: {fileID: 1675770611384782}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
