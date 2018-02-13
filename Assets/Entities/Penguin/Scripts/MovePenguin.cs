@@ -8,6 +8,8 @@ public class MovePenguin : MonoBehaviour {
     public float movement_speed = 4.0f;
     public float jump_speed = 4.0f;
     public float extra_gravity = 5.0f;
+    public float regular_bounce_force = 30.0f;
+    public float jump_bounce_force = 60.0f;
     public float raycast_down_dist = 0.75f;
 
     private Rigidbody rb;
@@ -48,6 +50,10 @@ public class MovePenguin : MonoBehaviour {
         return stablePosition;
     }
 
+    public float GetBounceForce() {
+        return jumpingUp ? jump_bounce_force : regular_bounce_force;
+    }
+
     private void FixedUpdate() {
 
         // check whether penguin should jump
@@ -76,14 +82,15 @@ public class MovePenguin : MonoBehaviour {
             rb.velocity = Vector3.zero;
         }
 
-        // update stable position if on ground
+        // update stable position 
         if (on_ground) {
             stablePosition = transform.position;
+        } else {
+            stablePosition.x = transform.position.x;
         }
 
         // check if penguin far enough off ground to flap wings
-        animator.SetBool("on_ground", Physics.Raycast(new Ray(transform.position, Vector3.down), raycast_down_dist));
-        Debug.DrawRay(transform.position, Vector3.down * raycast_down_dist, Color.red);
+        animator.SetBool("on_ground", NearGround());
     }
 
     private bool CanMove() {
@@ -116,4 +123,14 @@ public class MovePenguin : MonoBehaviour {
         }
     }
 
+    private bool NearGround() {
+        Vector3 front = transform.position;
+        front.x += 0.20f;
+        Vector3 back = transform.position;
+        back.x -= 0.25f;
+        Debug.DrawRay(front, Vector3.down * raycast_down_dist, Color.red);
+        Debug.DrawRay(back, Vector3.down * raycast_down_dist, Color.red);
+        return Physics.Raycast(new Ray(front, Vector3.down), raycast_down_dist) ||
+                Physics.Raycast(new Ray(back, Vector3.down), raycast_down_dist);
+    }
 }

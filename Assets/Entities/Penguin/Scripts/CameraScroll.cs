@@ -12,6 +12,7 @@ public class CameraScroll : MonoBehaviour {
     private Vector3 initialOffset;
     private Coroutine transitionCoroutine;
     private MovePenguin movePenguin;
+    private Vector3 transition_velocity = Vector3.zero;
 
 	// Use this for initialization
 	void Start () {
@@ -21,21 +22,25 @@ public class CameraScroll : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        float cameraHorzDiff = transform.position.x - Camera.main.transform.position.x;
-        float cameraVertDiff = movePenguin.GetStablePosition().y - (Camera.main.transform.position.y - initialOffset.y);
-        //float camX = Camera.main.transform.position.x;
-        float camY = Camera.main.transform.position.y;
-        float camZ = Camera.main.transform.position.z;
-        //keep camera approximately centered on player vertically
-        if (cameraVertDiff > up_limit || cameraVertDiff < down_limit) {
-            if (transitionCoroutine != null)
-                StopCoroutine(transitionCoroutine);
-            transitionCoroutine = StartCoroutine(CameraTransition(movePenguin.GetStablePosition() + initialOffset));
-        }
-        //move camera to the right with player
-        if (cameraHorzDiff > right_limit) {
-            Camera.main.transform.position = new Vector3(transform.position.x - right_limit, camY, camZ);
-        }
+        //float cameraHorzDiff = transform.position.x - Camera.main.transform.position.x;
+        //float cameraVertDiff = movePenguin.GetStablePosition().y - (Camera.main.transform.position.y - initialOffset.y);
+        ////float camX = Camera.main.transform.position.x;
+        //float camY = Camera.main.transform.position.y;
+        //float camZ = Camera.main.transform.position.z;
+        ////keep camera approximately centered on player vertically
+        //if (cameraVertDiff > up_limit || cameraVertDiff < down_limit) {
+        //    if (transitionCoroutine != null)
+        //        StopCoroutine(transitionCoroutine);
+        //    transitionCoroutine = StartCoroutine(CameraTransition(movePenguin.GetStablePosition() + initialOffset));
+        //}
+        ////move camera to the right with player
+        //if (cameraHorzDiff > right_limit) {
+        //    Camera.main.transform.position = new Vector3(transform.position.x - right_limit, camY, camZ);
+        //}
+
+
+        Vector3 targetPos = movePenguin.GetStablePosition() + initialOffset;
+        Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, targetPos, ref transition_velocity, transition_duration);
 	}
 
     private IEnumerator CameraTransition(Vector3 targetPos) {

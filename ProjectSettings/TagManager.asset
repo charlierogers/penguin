@@ -23,11 +23,11 @@ TagManager:
   - IglooLayer
   - InvisibleBarrier
   - SpikeBall
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Snow
+  - BallSnowCollider
+  - HoopEdge
+  - HoopDetector
+  - Ramp
   - 
   - 
   - 
