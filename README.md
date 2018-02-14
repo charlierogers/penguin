@@ -8,9 +8,6 @@ Keep bouncing the ball in the air as you navigate your way to the basketball hoo
 
 
 ## Credits
-#### Graphics
-* Clouds: http://pancakebobapps.wix.com/apps
-
 #### Sounds
 * Background Music: https://opengameart.org/content/helium-plains
 * Jump and Bounce: https://opengameart.org/content/8-bit-jump-1
