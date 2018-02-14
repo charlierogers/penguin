@@ -98,7 +98,8 @@ public class MovePenguin : MonoBehaviour {
     }
 
     private bool TooFarLeft() {
-        return transform.position.x - Camera.main.transform.position.x < left_movement_limit;
+        return transform.position.x < Camera.main.ScreenToWorldPoint(Vector3.zero).x;
+        //return transform.position.x - Camera.main.transform.position.x < left_movement_limit;
     }
 
     private IEnumerator JumpMonitor() {

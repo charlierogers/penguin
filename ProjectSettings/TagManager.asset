@@ -6,6 +6,7 @@ TagManager:
   tags:
   - VerticalWall
   - HorizontalWall
+  - SpeedRamp
   layers:
   - Default
   - TransparentFX
@@ -43,9 +44,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Character
+  - name: Objects
     uniqueID: 2245946989
+    locked: 0
+  - name: BallTrail
+    uniqueID: 1479317179
     locked: 0
   - name: Penguin
     uniqueID: 1689275881
+    locked: 0
+  - name: Ball
+    uniqueID: 3209957021
+    locked: 0
+  - name: BallCover
+    uniqueID: 42618089
     locked: 0

@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class BallMovement : MonoBehaviour {
 
-    public float movement_speed = 1.0f;
+    public float movement_speed = 4.0f;
+    public float fast_movement_speed = 8.0f;
     public float bounce_force = 50.0f;
     public float anti_gravity = 3.0f;
     public float squish_amount = 0.75f;
@@ -16,17 +17,19 @@ public class BallMovement : MonoBehaviour {
     private Coroutine squishCoroutine;
 
     private bool hit_snow;
+    private float speed;
 
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
         hit_snow = false;
+        speed = movement_speed;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
         if (!hit_snow) {
-            rb.velocity = new Vector3(movement_speed, rb.velocity.y, rb.velocity.z);
+            rb.velocity = new Vector3(speed, rb.velocity.y, rb.velocity.z);
             if (rb.velocity.y < 0.0f) {
                 rb.AddForce(Vector3.up * anti_gravity);
             }
@@ -46,6 +49,22 @@ public class BallMovement : MonoBehaviour {
         } else if (!hit_snow && (collision.gameObject.layer == LayerMask.NameToLayer("Snow") ||
                 collision.gameObject.layer == LayerMask.NameToLayer("HoopEdge"))) {
             hit_snow = true;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision) {
+        if (collision.gameObject.CompareTag("SpeedRamp")) {
+            rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY |
+                RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionY;
+            speed = fast_movement_speed;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision) {
+        if (collision.gameObject.CompareTag("SpeedRamp")) {
+            rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY |
+                RigidbodyConstraints.FreezeRotationZ;
+            speed = movement_speed;
         }
     }
 

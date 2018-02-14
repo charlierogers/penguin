@@ -15,6 +15,7 @@ public class ResetLevelOnFall : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (transform.position.y < fall_threshold) {
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().PlayFallingSound();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 	}

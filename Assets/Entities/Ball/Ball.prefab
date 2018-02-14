@@ -143,9 +143,9 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1689275881
-  m_SortingLayer: 2
-  m_SortingOrder: 3
+  m_SortingLayerID: 1479317179
+  m_SortingLayer: 3
+  m_SortingOrder: 2
   m_Time: 3
   m_Parameters:
     serializedVersion: 2
@@ -215,8 +215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e59d1cfff79444287ac87adc95e4e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sorting_layer: Penguin
-  order_in_layer: 3
+  sorting_layer: BallTrail
+  order_in_layer: 2
 --- !u!114 &114285633689621646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -276,6 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement_speed: 4
+  fast_movement_speed: 8
   bounce_force: 15
   anti_gravity: 0.5
   squish_amount: 0.75
@@ -324,9 +325,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1689275881
-  m_SortingLayer: 2
-  m_SortingOrder: 4
+  m_SortingLayerID: -1085010275
+  m_SortingLayer: 4
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 26fbf4d39490a764995d9f54e0caef75, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

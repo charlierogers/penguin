@@ -12,6 +12,8 @@ public class SoundManager : MonoBehaviour {
     public AudioClip ballBounceSound;
     public AudioClip ballDieSound;
     public AudioClip wonLevelSound;
+    public AudioClip fallingSound;
+    public AudioClip spikeSound;
 
 	// Use this for initialization
 	void Start () {
@@ -45,6 +47,16 @@ public class SoundManager : MonoBehaviour {
 
     public void PlayWonLevelSound() {
         soundEffects.clip = wonLevelSound;
+        soundEffects.Play();
+    }
+
+    public void PlayFallingSound() {
+        soundEffects.clip = fallingSound;
+        soundEffects.Play();
+    }
+
+    public void PlaySpikeSound() {
+        soundEffects.clip = spikeSound;
         soundEffects.Play();
     }
 }

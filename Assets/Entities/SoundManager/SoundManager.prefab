@@ -56,7 +56,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -136,7 +136,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -219,3 +219,5 @@ MonoBehaviour:
   ballBounceSound: {fileID: 8300000, guid: d8a8d50e1dd23584d8791f643d971656, type: 3}
   ballDieSound: {fileID: 8300000, guid: ffc6778d64b2a444d849ba8092aaa34a, type: 3}
   wonLevelSound: {fileID: 8300000, guid: 6c12f218ecde50a4ab1ceeca68f91ac1, type: 3}
+  fallingSound: {fileID: 8300000, guid: 621df8ee314e9854a95c6e79d1e6bcd5, type: 3}
+  spikeSound: {fileID: 8300000, guid: eb2a06df0c6eae54b944a083435d9dfb, type: 3}

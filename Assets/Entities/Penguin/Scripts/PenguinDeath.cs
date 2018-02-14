@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class PenguinDeath : MonoBehaviour {
 
     public float level_reset_delay = 2.0f;
+    public float spike_shake_radius = 0.25f;
 
     private InputController inputController;
     private Rigidbody rb;
     private bool killed;
+    private bool getting_spiked;
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +22,9 @@ public class PenguinDeath : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (getting_spiked) {
+            transform.position = transform.position + (Vector3) Random.insideUnitCircle * spike_shake_radius;
+        }
 	}
 
     public void Kill() {
@@ -33,17 +37,16 @@ public class PenguinDeath : MonoBehaviour {
 
     private IEnumerator DelayedReset() {
         yield return new WaitForSeconds(level_reset_delay);
+        getting_spiked = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("SpikeBall")) {
-            //rb.velocity = Vector3.zero;
-            //rb.useGravity = false;
+        if (!killed && !getting_spiked && collision.gameObject.layer == LayerMask.NameToLayer("SpikeBall")) {
+            getting_spiked = true;
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySpikeSound();
             rb.constraints = RigidbodyConstraints.FreezeAll;
             Kill();
-            //FixedJoint joint = gameObject.AddComponent<FixedJoint>();
-            //joint.connectedBody = collision.rigidbody;
         }
     }
 }
